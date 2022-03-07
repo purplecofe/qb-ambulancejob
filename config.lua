@@ -1,5 +1,7 @@
 Config = {}
 
+Config.UseTarget = true
+
 Config.MinimalDoctors = 2
 Config.WipeInventoryOnRespawn = true
 
@@ -28,7 +30,7 @@ Config.Locations = {
         [1] = vector4(338.5, -583.85, 74.16, 245.5),
     },
     ["main"] = {
-        [1] = vector3(298.44, -599.7, 43.29),
+        [1] = vector3(325.3, -598.75, 43.29),
     },
     ["stash"] = {
         [1] = vector3(309.78, -596.6, 43.29),
