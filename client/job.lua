@@ -203,7 +203,7 @@ RegisterNetEvent('hospital:client:CheckStatus', function()
                             TriggerEvent('chat:addMessage', {
                                 color = { 255, 0, 0},
                                 multiline = false,
-                                args = {Lang:t('info.status'), WeaponDamageList[v]}
+                                args = {Lang:t('info.status'), QBCore.Shared.Weapons[v].damagereason}
                             })
                         end
                     elseif result["BLEED"] > 0 then
@@ -471,7 +471,7 @@ CreateThread(function()
                 EMSHelicopter(k)
             else
                 inVehicle = false
-                CheckHelicopter = false
+                CheckHeli = false
                 exports['qb-core']:HideText()
             end
         end)
