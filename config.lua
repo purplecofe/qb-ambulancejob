@@ -2,52 +2,75 @@ Config = {}
 
 Config.UseTarget = true
 
-Config.MinimalDoctors = 2
-Config.WipeInventoryOnRespawn = true
+Config.MinimalDoctors = 1
+Config.WipeInventoryOnRespawn = false
 
 Config.Locations = {
     ["checking"] = {
 	    [1] = vector3(308.19, -595.35, 43.29),
 	    [2] = vector3(-254.54, 6331.78, 32.43), -- paleto
     },
-    ["duty"] = {
-        [1] = vector3(311.18, -599.25, 43.29),
-        [2] = vector3(-254.88, 6324.5, 32.58),
-    },
     ["vehicle"] = {
-        [1] = vector4(294.578, -574.761, 43.179, 35.792),
-        [2] = vector4(-234.28, 6329.16, 32.15, 222.5),
+        [1] = {coords = vector4(332.82, -590.92, 28.8, 340.0), heading = 70.0, width = 3.5, height = 5},
+        [2] = {coords = vector4(329.62, -589.62, 28.8, 340.0), heading = 70.0, width = 3.5, height = 5},
+        [3] = {coords = vector4(326.26, -588.55, 28.8, 340.0), heading = 70.0, width = 3.5, height = 5},
+        [4] = {coords = vector4(322.97, -587.3, 28.8, 340.0), heading = 70.0, width = 3.5, height = 5},
+        [5] = {coords = vector4(319.53, -586.13, 28.8, 340.0), heading = 70.0, width = 3.5, height = 5},
+        [6] = {coords = vector4(316.22, -578.01, 28.8, 250.0), heading = 340.0, width = 4.4, height = 7.5},
+        [7] = {coords = vector4(317.75, -573.8, 28.8, 250.0), heading = 340.0, width = 4.4, height = 7.5},
+        [8] = {coords = vector4(319.18, -569.57, 28.8, 250.0), heading = 340.0, width = 4.4, height = 7.5},
+        [9] = {coords = vector4(320.78, -565.33, 28.8, 250.0), heading = 340.0, width = 4.4, height = 7.5},
     },
     ["helicopter"] = {
-        [1] = vector4(351.58, -587.45, 74.16, 160.5),
-        [2] = vector4(-475.43, 5988.353, 31.716, 31.34),
+        [1] = {coords = vector4(352.06, -587.93, 74.16, 160.5), heading = 160.0, width = 13, height = 13},
     },
     ["armory"] = {
-        [1] = vector3(309.93, -602.94, 43.29),
-        [2] = vector3(-245.13, 6315.71, 32.82),
-    },
-    ["roof"] = {
-        [1] = vector4(338.5, -583.85, 74.16, 245.5),
-    },
-    ["main"] = {
-        [1] = vector3(325.3, -598.75, 43.29),
+        [1] = vector3(306.82, -601.67, 43.64),
     },
     ["stash"] = {
-        [1] = vector3(309.78, -596.6, 43.29),
+        [1] = vector3(302.35, -599.5, 43.28),
+        [2] = vector3(298.15, -598.31, 43.28),
     },
     ["beds"] = {
-        [1] = {coords = vector4(353.1, -584.6, 43.11, 152.08), taken = false, model = 1631638868},
-        [2] = {coords = vector4(356.79, -585.86, 43.11, 152.08), taken = false, model = 1631638868},
-        [3] = {coords = vector4(354.12, -593.12, 43.1, 336.32), taken = false, model = 2117668672},
-        [4] = {coords = vector4(350.79, -591.8, 43.1, 336.32), taken = false, model = 2117668672},
-        [5] = {coords = vector4(346.99, -590.48, 43.1, 336.32), taken = false, model = 2117668672},
-        [6] = {coords = vector4(360.32, -587.19, 43.02, 152.08), taken = false, model = -1091386327},
-        [7] = {coords = vector4(349.82, -583.33, 43.02, 152.08), taken = false, model = -1091386327},
-        [8] = {coords = vector4(326.98, -576.17, 43.02, 152.08), taken = false, model = -1091386327},
+        [1] = {coords = vector4(309.35, -577.38, 42.84, 160.0), taken = false, model = 1631638868},
+        [2] = {coords = vector4(313.93, -579.04, 42.84, 160.0), taken = false, model = 1631638868},
+        [3] = {coords = vector4(319.41, -581.04, 42.84, 160.0), taken = false, model = 1631638868},
+        [4] = {coords = vector4(324.26, -582.8, 42.84, 160.0), taken = false, model = 1631638868},
+        [5] = {coords = vector4(322.62, -587.17, 42.84, 340.0), taken = false, model = 1631638868},
+        [6] = {coords = vector4(317.67, -585.37, 42.84, 340.0), taken = false, model = 1631638868},
+        [7] = {coords = vector4(314.47, -584.2, 42.84, 340.0), taken = false, model = 1631638868},
+        [8] = {coords = vector4(311.06, -582.96, 42.84, 340.0), taken = false, model = 1631638868},
+        [9] = {coords = vector4(307.72, -581.75, 42.84, 340.0), taken = false, model = 1631638868},
+    },
+    ["otherBeds"] = {
+        -- 手術室
+        [1] = {coords = vector4(315.34, -566.45, 42.31, 160.0), taken = false, model = -1519439119},
+        [2] = {coords = vector4(321.07, -568.4, 42.29, 160.0), taken = false, model = -1519439119},
+        [3] = {coords = vector4(326.77, -571.08, 42.29, 160.0), taken = false, model = -1519439119},
+        -- MRI
+        [4] = {coords = vector4(337.0, -575.23, 42.27, 160.0), taken = false, model = -289946279},
+        -- X-RAY
+        [5] = {coords = vector4(348.62, -579.46, 42.27, 160.0), taken = false, model = -289946279},
+        -- DR.OFFICE 373
+        [6] = {coords = vector4(354.18, -593.0, 42.84, 70.0), taken = false, model = -1091386327},
+        -- PRIVATE ROOM 374
+        [7] = {coords = vector4(354.44, -600.19, 42.85, 70.0), taken = false, model = 1631638868},
+        -- TREATMNT
+        [8] = {coords = vector4(346.48, -590.34, 42.84, 70.0), taken = false, model = -1091386327},
+        -- PATIENT ROOM 371
+        [9] = {coords = vector4(363.8, -589.12, 42.85, 70.0), taken = false, model = 1631638868},
+        [10] = {coords = vector4(364.96, -585.94, 42.85, 70.0), taken = false, model = 1631638868},
+        [11] = {coords = vector4(366.52, -581.66, 42.85, 70.0), taken = false, model = 1631638868},
+        -- DR OFFICE 372
+        [12] = {coords = vector4(357.55, -598.16, 42.84, 160.0), taken = false, model = -1091386327},
+        -- PRIVATE ROOM 369
+        [13] = {coords = vector4(361.36, -581.3, 42.83, 70.0), taken = false, model = 1631638868},
+        -- PRIVATE ROOM 370
+        [14] = {coords = vector4(359.54, -586.23, 42.84, 70.0), taken = false, model = 1631638868},
 	--- paleto
-	    [9] = {coords = vector4(-252.43, 6312.25, 32.34, 313.48), taken = false, model = 2117668672},
-        [10] = {coords = vector4(-247.04, 6317.95, 32.34, 134.64), taken = false, model = 2117668672},
-        [11] = {coords = vector4(-255.98, 6315.67, 32.34, 313.91), taken = false, model = 2117668672},
+	    -- [10] = {coords = vector4(-252.43, 6312.25, 32.34, 313.48), taken = false, model = 2117668672},
+        -- [11] = {coords = vector4(-247.04, 6317.95, 32.34, 134.64), taken = false, model = 2117668672},
+        -- [12] = {coords = vector4(-255.98, 6315.67, 32.34, 313.91), taken = false, model = 2117668672},
     },
     ["stations"] = {
         [1] = {label = Lang:t('info.pb_hospital'), coords = vector4(304.27, -600.33, 43.28, 272.249)}
@@ -55,30 +78,12 @@ Config.Locations = {
 }
 
 Config.AuthorizedVehicles = {
-	-- Grade 0
-	[0] = {
-		["ambulance"] = "Ambulance",
-	},
-	-- Grade 1
-	[1] = {
-		["ambulance"] = "Ambulance",
-
-	},
-	-- Grade 2
-	[2] = {
-		["ambulance"] = "Ambulance",
-	},
-	-- Grade 3
-	[3] = {
-		["ambulance"] = "Ambulance",
-	},
-	-- Grade 4
-	[4] = {
-		["ambulance"] = "Ambulance",
-	}
+    ["emsnspeedo"] = "救護車"
 }
 
-Config.Helicopter = "polmav"
+Config.Helicopter = {
+    ["emsaw139"] = "救護直升機"
+}
 
 Config.Items = {
     label = Lang:t('info.safe'),
@@ -86,7 +91,7 @@ Config.Items = {
     items = {
         [1] = {
             name = "radio",
-            price = 0,
+            price = 58,
             amount = 50,
             info = {},
             type = "item",
@@ -94,7 +99,7 @@ Config.Items = {
         },
         [2] = {
             name = "bandage",
-            price = 0,
+            price = 12,
             amount = 50,
             info = {},
             type = "item",
@@ -102,7 +107,7 @@ Config.Items = {
         },
         [3] = {
             name = "painkillers",
-            price = 0,
+            price = 12,
             amount = 50,
             info = {},
             type = "item",
@@ -110,7 +115,7 @@ Config.Items = {
         },
         [4] = {
             name = "firstaid",
-            price = 0,
+            price = 12,
             amount = 50,
             info = {},
             type = "item",
@@ -118,7 +123,7 @@ Config.Items = {
         },
         [5] = {
             name = "weapon_flashlight",
-            price = 0,
+            price = 287,
             amount = 50,
             info = {},
             type = "item",
@@ -126,7 +131,7 @@ Config.Items = {
         },
         [6] = {
             name = "weapon_fireextinguisher",
-            price = 0,
+            price = 115,
             amount = 50,
             info = {},
             type = "item",
@@ -173,7 +178,7 @@ Config.MessageTimer = 12
 --[[
     AIHealTimer : How long it will take to be healed after checking in, in seconds
 ]]
-Config.AIHealTimer = 20
+Config.AIHealTimer = 60
 
 --[[
     BleedTickRate : How much time, in seconds, between bleed ticks
