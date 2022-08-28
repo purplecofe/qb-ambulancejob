@@ -69,7 +69,7 @@ function SetLaststand(bool)
             TaskPlayAnim(ped, lastStandDict, lastStandAnim, 1.0, 8.0, -1, 1, -1, false, false, false)
         end
         InLaststand = true
-        TriggerServerEvent('hospital:server:ambulanceAlert', Lang:t('info.civ_down'))
+        -- TriggerServerEvent('hospital:server:civilianAlert')
         CreateThread(function()
             while InLaststand do
                 ped = PlayerPedId()
@@ -95,7 +95,7 @@ function SetLaststand(bool)
                         weaponLabel = weaponItem.label
                         weaponName = weaponItem.name
                     end
-                    TriggerServerEvent("qb-log:server:CreateLog", "death", Lang:t('logs.death_log_title', {playername = GetPlayerName(-1), playerid = GetPlayerServerId(player)}), "red", Lang:t('logs.death_log_message', {killername = killerName, playername = GetPlayerName(player), weaponlabel = weaponLabel, weaponname = weaponName}))
+                    TriggerServerEvent("qb-log:server:CreateLog", "death", Lang:t('logs.death_log_title', {playername = GetPlayerName(player), playerid = GetPlayerServerId(player)}), "red", Lang:t('logs.death_log_message', {killername = killerName, playername = GetPlayerName(player), weaponlabel = weaponLabel, weaponname = weaponName}))
                     deathTime = 0
                     OnDeath()
                     DeathTimer()

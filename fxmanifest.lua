@@ -6,7 +6,7 @@ version '1.0.0'
 
 shared_scripts {
 	'@qb-core/shared/locale.lua',
-	'locales/en.lua',
+	'locales/zh.lua',
 	'config.lua'
 }
 
@@ -18,7 +18,8 @@ client_scripts {
 	'client/dead.lua',
 	'@PolyZone/client.lua',
 	'@PolyZone/BoxZone.lua',
-	'@PolyZone/ComboZone.lua'
+	'@PolyZone/CircleZone.lua',
+	'@PolyZone/ComboZone.lua',
 }
 
 server_scripts {
