@@ -11,6 +11,8 @@ local doctorCount = 0
 local CurrentDamageList = {}
 local cam = nil
 local playerArmor = nil
+local Targets = {}
+
 inBedDict = "anim@gangops@morgue@table@"
 inBedAnim = "body_search"
 isInHospitalBed = false
@@ -235,7 +237,6 @@ local function ResetAll()
         limbs = BodyParts,
         isBleeding = tonumber(isBleeding)
     })
-    TriggerServerEvent("hospital:server:resetHungerThirst")
 end
 
 local function loadAnimDict(dict)
@@ -338,11 +339,6 @@ local function CheckWeaponDamage(ped)
         if HasPedBeenDamagedByWeapon(ped, k, 0) then
             detected = true
             if not IsInDamageList(k) then
-                TriggerEvent('chat:addMessage', {
-                    color = { 255, 0, 0},
-                    multiline = false,
-                    args = {Lang:t('info.status'), v.damagereason}
-                })
                 CurrentDamageList[#CurrentDamageList+1] = k
             end
         end
@@ -882,31 +878,33 @@ end)
 -- Convar turns into a boolean
 if Config.UseTarget then
     CreateThread(function()
-        for k, v in pairs(Config.Locations["checking"]) do
-            exports['qb-target']:AddBoxZone("checking"..k, vector3(v.x, v.y, v.z), 3.5, 2, {
-                name = "checking"..k,
-                heading = -72,
-                debugPoly = false,
-                minZ = v.z - 2,
-                maxZ = v.z + 2,
-            }, {
-                options = {
-                    {
-                        type = "client",
-                        icon = "fa fa-clipboard",
-                        event = "qb-ambulancejob:checkin",
-                        label = "Check In",
-                    }
-                },
-                distance = 1.5
-            })
-        end
+        -- 櫃台
+        Targets["PbChecking"] =
+        exports['qb-target']:AddBoxZone("PbChecking", vector3(307.65, -595.35, 43.29), 1.5, 1, { name = "PbChecking", debugPoly = Config.Debug, heading = -20, minZ = 42.28, maxZ = 43.28, }, 
+        { options = {{ event = "qb-ambulancejob:checkin", icon = "fa fa-clipboard", label = Lang:t('text.check'), job = "ambulance" }, 
+                    { event = "EMSToggle:Duty", icon = "fa fa-clipboard", label = Lang:t('text.toggle_duty'), job = "ambulance" }}, 
+        distance = 1.5 })
+        -- 置物櫃
+        Targets["PbStash1"] =
+        exports['qb-target']:AddBoxZone("PbStash1", vector3(302.5, -599.6, 44.28), 3.0, 0.5, { name = "PbStash1", debugPoly = Config.Debug, heading = 340, minZ = 40.48, maxZ = 44.48, }, 
+        { options = {{ event = "qb-ambulancejob:stash", icon = "fa fa-hand", label = Lang:t('text.stash'), job = "ambulance" }},
+        distance = 1.5 })
+        Targets["PbStash2"] =
+        exports['qb-target']:AddBoxZone("PbStash2", vector3(298.14, -598.13, 43.28), 3.0, 0.5, { name = "PbStash2", debugPoly = Config.Debug, heading = 340, minZ = 42.28, maxZ = 44.48, }, 
+        { options = {{ event = "qb-ambulancejob:stash", icon = "fa fa-hand", label = Lang:t('text.stash'), job = "ambulance" }},
+        distance = 1.5 })
+        -- 藥櫃
+        Targets["PBStore"] =
+        exports['qb-target']:AddBoxZone("PBStore", vector3(306.5, -602.52, 43.28), 2.0, 1, { name = "PBStore", debugPoly = Config.Debug, heading = 69, minZ = 42.28, maxZ = 44.28, },
+         { options = {{ event = "qb-ambulancejob:armory", icon = "fa fa-hand", label = Lang:t('text.armory'), job = "ambulance" }},
+         distance = 1.5 })
 
-        for k, v in pairs(Config.Locations["beds"]) do
+         for k, v in pairs(Config.Locations["beds"]) do
+            Targets["beds"..k] =
             exports['qb-target']:AddBoxZone("beds"..k,  v.coords, 2.5, 2.3, {
                 name = "beds"..k,
                 heading = -20,
-                debugPoly = false,
+                debugPoly = Config.Debug,
                 minZ = v.coords.z - 1,
                 maxZ = v.coords.z + 1,
             }, {
@@ -915,59 +913,15 @@ if Config.UseTarget then
                         type = "client",
                         event = "qb-ambulancejob:beds",
                         icon = "fas fa-bed",
-                        label = "Layin Bed",
+                        label = "躺床",
                     }
                 },
                 distance = 1.5
             })
         end
     end)
-else
-    CreateThread(function()
-        local checkingPoly = {}
-        for k, v in pairs(Config.Locations["checking"]) do
-            checkingPoly[#checkingPoly+1] = BoxZone:Create(vector3(v.x, v.y, v.z), 3.5, 2, {
-                heading = -72,
-                name="checkin"..k,
-                debugPoly = false,
-                minZ = v.z - 2,
-                maxZ = v.z + 2,
-            })
-            local checkingCombo = ComboZone:Create(checkingPoly, {name = "checkingCombo", debugPoly = false})
-            checkingCombo:onPlayerInOut(function(isPointInside)
-                if isPointInside then
-                    if doctorCount >= Config.MinimalDoctors then
-                        exports['qb-core']:DrawText(Lang:t('text.call_doc'),'left')
-                        CheckInControls("checkin")
-                    else
-                        exports['qb-core']:DrawText(Lang:t('text.check_in'), 'left')
-                        CheckInControls("checkin")
-                    end
-                else
-                    listen = false
-                    exports['qb-core']:HideText()
-                end
-            end)
-        end
-        local bedPoly = {}
-        for k, v in pairs(Config.Locations["beds"]) do
-            bedPoly[#bedPoly+1] = BoxZone:Create(v.coords, 2.5, 2.3, {
-                name="beds"..k,
-                heading = -20,
-                debugPoly = false,
-                minZ = v.coords.z - 1,
-                maxZ = v.coords.z + 1,
-            })
-            local bedCombo = ComboZone:Create(bedPoly, {name = "bedCombo", debugPoly = false})
-            bedCombo:onPlayerInOut(function(isPointInside)
-                if isPointInside then
-                    exports['qb-core']:DrawText(Lang:t('text.lie_bed'), 'left')
-                    CheckInControls("beds")
-                else
-                    listen = false
-                    exports['qb-core']:HideText()
-                end
-            end)
-        end
-    end)
 end
+
+AddEventHandler('onResourceStop', function(r) if r ~= GetCurrentResourceName() then return end
+	for k in pairs(Targets) do exports['qb-target']:RemoveZone(k) end
+end)

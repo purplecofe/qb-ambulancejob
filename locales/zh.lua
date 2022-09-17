@@ -74,15 +74,18 @@ local Translations = {
     },
     menu = {
         amb_vehicles = '圓帽山醫院車庫',
+        status = '健康狀況',
         close = '⬅ 關閉選單',
     },
     text = {
         armory_button = '[E] - 藥櫃',
         armory = '藥櫃',
+        stash = '置物櫃',
         veh_button = '車庫',
         veh_parking = '停車',
         bed_out = '[E] - 下床',
         check = '掛號',
+        toggle_duty = '上/下班'
     },
     body = {
         head = '頭部',
@@ -111,12 +114,12 @@ local Translations = {
         status = '檢查傷勢...',
     },
     logs = {
-        death_log_title = "%{playername} (%{playerid}) 倒地",
-        death_log_message = "%{killername} 用 **%{weaponlabel}** (%{weaponname}) 擊倒了 %{playername}",
+        death_log_title = "%{playername} (%{playerid}) is dead",
+        death_log_message = "%{killername} has killed %{playername} with a **%{weaponlabel}** (%{weaponname})",
     }
 }
 
-Lang = Locale:new({
+Lang = Lang or Locale:new({
     phrases = Translations,
     warnOnMissing = true
 })

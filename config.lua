@@ -32,12 +32,8 @@ Config.MajorArmoredBleedChance = 45 -- The chance, in percent, that a player wil
 Config.MaxInjuryChanceMulti = 3 -- How many times the HealthDamage value above can divide into damage taken before damage is forced to be applied
 Config.DamageMinorToMajor = 35 -- How much damage would have to be applied for a minor weapon to be considered a major damage event. Put this at 100 if you want to disable it
 Config.AlertShowInfo = 2 -- How many injuries a player must have before being alerted about them
-
+Config.Debug = false
 Config.Locations = { -- Edit the various interaction points for players or create new ones
-    ["checking"] = {
-	    [1] = vector3(308.19, -595.35, 43.29),
-	    [2] = vector3(-254.54, 6331.78, 32.43), -- paleto
-    },
     ["vehicle"] = {
         [1] = {coords = vector4(332.82, -590.92, 28.8, 340.0), heading = 70.0, width = 3.5, height = 5},
         [2] = {coords = vector4(329.62, -589.62, 28.8, 340.0), heading = 70.0, width = 3.5, height = 5},
@@ -51,13 +47,6 @@ Config.Locations = { -- Edit the various interaction points for players or creat
     },
     ["helicopter"] = {
         [1] = {coords = vector4(352.06, -587.93, 74.16, 160.5), heading = 160.0, width = 13, height = 13},
-    },
-    ["armory"] = {
-        [1] = vector3(306.82, -601.67, 43.64),
-    },
-    ["stash"] = {
-        [1] = vector3(302.35, -599.5, 43.28),
-        [2] = vector3(298.15, -598.31, 43.28),
     },
     ["beds"] = {
         [1] = {coords = vector4(309.35, -577.38, 42.84, 160.0), taken = false, model = 1631638868},
