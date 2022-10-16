@@ -34,20 +34,6 @@ Config.DamageMinorToMajor = 35 -- How much damage would have to be applied for a
 Config.AlertShowInfo = 2 -- How many injuries a player must have before being alerted about them
 Config.Debug = false
 Config.Locations = { -- Edit the various interaction points for players or create new ones
-    ["vehicle"] = {
-        [1] = {coords = vector4(332.82, -590.92, 28.8, 340.0), heading = 70.0, width = 3.5, height = 5},
-        [2] = {coords = vector4(329.62, -589.62, 28.8, 340.0), heading = 70.0, width = 3.5, height = 5},
-        [3] = {coords = vector4(326.26, -588.55, 28.8, 340.0), heading = 70.0, width = 3.5, height = 5},
-        [4] = {coords = vector4(322.97, -587.3, 28.8, 340.0), heading = 70.0, width = 3.5, height = 5},
-        [5] = {coords = vector4(319.53, -586.13, 28.8, 340.0), heading = 70.0, width = 3.5, height = 5},
-        [6] = {coords = vector4(316.22, -578.01, 28.8, 250.0), heading = 340.0, width = 4.4, height = 7.5},
-        [7] = {coords = vector4(317.75, -573.8, 28.8, 250.0), heading = 340.0, width = 4.4, height = 7.5},
-        [8] = {coords = vector4(319.18, -569.57, 28.8, 250.0), heading = 340.0, width = 4.4, height = 7.5},
-        [9] = {coords = vector4(320.78, -565.33, 28.8, 250.0), heading = 340.0, width = 4.4, height = 7.5},
-    },
-    ["helicopter"] = {
-        [1] = {coords = vector4(352.06, -587.93, 74.16, 160.5), heading = 160.0, width = 13, height = 13},
-    },
     ["beds"] = {
         [1] = {coords = vector4(309.35, -577.38, 42.84, 160.0), taken = false, model = 1631638868},
         [2] = {coords = vector4(313.93, -579.04, 42.84, 160.0), taken = false, model = 1631638868},
@@ -377,7 +363,10 @@ Config.Weapons = { -- Correspond weapon names to their class number
     [`WEAPON_SNSPISTOL`] = Config.WeaponClasses['SMALL_CALIBER'],
     [`WEAPON_SNSPISTOL_MK2`] = Config.WeaponClasses['SMALL_CALIBER'],
     [`WEAPON_VINTAGEPISTOL`] = Config.WeaponClasses['SMALL_CALIBER'],
-
+    [`WEAPON_GLOCK17`] = Config.WeaponClasses['SMALL_CALIBER'],
+    [`WEAPON_M9`] = Config.WeaponClasses['SMALL_CALIBER'],
+    [`WEAPON_M1911`] = Config.WeaponClasses['SMALL_CALIBER'],
+    [`WEAPON_FNX45`] = Config.WeaponClasses['SMALL_CALIBER'],
     --[[ Medium Caliber ]]--
     [`WEAPON_ADVANCEDRIFLE`] = Config.WeaponClasses['MEDIUM_CALIBER'],
     [`WEAPON_ASSAULTSMG`] = Config.WeaponClasses['MEDIUM_CALIBER'],
@@ -397,7 +386,9 @@ Config.Weapons = { -- Correspond weapon names to their class number
     [`WEAPON_SMG_MK2`] = Config.WeaponClasses['MEDIUM_CALIBER'],
     [`WEAPON_SPECIALCARBINE`] = Config.WeaponClasses['MEDIUM_CALIBER'],
     [`WEAPON_SPECIALCARBINE_MK2`] = Config.WeaponClasses['MEDIUM_CALIBER'],
-
+    [`WEAPON_UZI`] = Config.WeaponClasses['MEDIUM_CALIBER'],
+    [`WEAPON_MAC10`] = Config.WeaponClasses['MEDIUM_CALIBER'],
+    [`WEAPON_MP9`] = Config.WeaponClasses['MEDIUM_CALIBER'],
     --[[ High Caliber ]]--
     [`WEAPON_ASSAULTRIFLE`] = Config.WeaponClasses['HIGH_CALIBER'],
     [`WEAPON_ASSAULTRIFLE_MK2`] = Config.WeaponClasses['HIGH_CALIBER'],
@@ -412,7 +403,16 @@ Config.Weapons = { -- Correspond weapon names to their class number
     [`WEAPON_MUSKET`] = Config.WeaponClasses['HIGH_CALIBER'],
     [`WEAPON_RAILGUN`] = Config.WeaponClasses['HIGH_CALIBER'],
     [`WEAPON_HEAVYRIFLE`] = Config.WeaponClasses['HIGH_CALIBER'],
-
+    [`WEAPON_DE`] = Config.WeaponClasses['HIGH_CALIBER'],
+    [`WEAPON_M4`] = Config.WeaponClasses['HIGH_CALIBER'],
+    [`WEAPON_HK416`] = Config.WeaponClasses['HIGH_CALIBER'],
+    [`WEAPON_AR15`] = Config.WeaponClasses['HIGH_CALIBER'],
+    [`WEAPON_AK47`] = Config.WeaponClasses['HIGH_CALIBER'],
+    [`WEAPON_M70`] = Config.WeaponClasses['HIGH_CALIBER'],
+    [`WEAPON_SCARH`] = Config.WeaponClasses['HIGH_CALIBER'],
+    [`WEAPON_MK14`] = Config.WeaponClasses['HIGH_CALIBER'],
+    [`WEAPON_M110`] = Config.WeaponClasses['HIGH_CALIBER'],
+    [`WEAPON_HUNTINGRIFLE`] = Config.WeaponClasses['HIGH_CALIBER'],
     --[[ Shotguns ]]--
     [`WEAPON_ASSAULTSHOTGUN`] = Config.WeaponClasses['SHOTGUN'],
     [`WEAPON_BULLUPSHOTGUN`] = Config.WeaponClasses['SHOTGUN'],
@@ -422,7 +422,8 @@ Config.Weapons = { -- Correspond weapon names to their class number
     [`WEAPON_PUMPSHOTGUN_MK2`] = Config.WeaponClasses['SHOTGUN'],
     [`WEAPON_SAWNOFFSHOTGUN`] = Config.WeaponClasses['SHOTGUN'],
     [`WEAPON_SWEEPERSHOTGUN`] = Config.WeaponClasses['SHOTGUN'],
-
+    [`WEAPON_REMINGTON`] = Config.WeaponClasses['SHOTGUN'],
+    [`WEAPON_MOSSBERG`] = Config.WeaponClasses['SHOTGUN'],
     --[[ Animals ]]--
     [`WEAPON_ANIMAL`] = Config.WeaponClasses['WILDLIFE'], -- Animal
     [`WEAPON_COUGAR`] = Config.WeaponClasses['WILDLIFE'], -- Cougar
@@ -436,7 +437,8 @@ Config.Weapons = { -- Correspond weapon names to their class number
     [`WEAPON_KNIFE`] = Config.WeaponClasses['CUTTING'],
     [`WEAPON_MACHETE`] = Config.WeaponClasses['CUTTING'],
     [`WEAPON_SWITCHBLADE`] = Config.WeaponClasses['CUTTING'],
-
+    [`WEAPON_SHIV`] = Config.WeaponClasses['CUTTING'],
+    [`WEAPON_KATANA`] = Config.WeaponClasses['CUTTING'],
     --[[ Light Impact ]]--
     [`WEAPON_KNUCKLE`] = Config.WeaponClasses['LIGHT_IMPACT'],
 
@@ -452,6 +454,7 @@ Config.Weapons = { -- Correspond weapon names to their class number
     [`WEAPON_WRENCH`] = Config.WeaponClasses['HEAVY_IMPACT'],
     [`WEAPON_RAMMED_BY_CAR`] = Config.WeaponClasses['HEAVY_IMPACT'],
     [`WEAPON_RUN_OVER_BY_CAR`] = Config.WeaponClasses['HEAVY_IMPACT'],
+    [`WEAPON_SLEDGEHAMMER`] = Config.WeaponClasses['HEAVY_IMPACT'],
 
     --[[ Explosives ]]--
     [`WEAPON_EXPLOSION`] = Config.WeaponClasses['EXPLOSIVE'],
