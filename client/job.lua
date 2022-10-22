@@ -70,7 +70,7 @@ function MenuGarage()
         }
 
     }
-    exports['qb-menu']:openMenu(vehicleMenu)
+    exports['ps-ui']:openMenu(vehicleMenu)
 end
 
 -- Events
@@ -99,7 +99,7 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     CreateThread(function()
         Wait(5000)
         SetEntityMaxHealth(ped, 200)
-        SetEntityHealth(ped, 200)
+        -- SetEntityHealth(ped, 200)
         SetPlayerHealthRechargeMultiplier(player, 0.0)
         SetPlayerHealthRechargeLimit(player, 0.0)
     end)
@@ -168,7 +168,7 @@ function Status()
                 event = "qb-menu:client:closeMenu"
             }
         }
-        exports['qb-menu']:openMenu(statusMenu)
+        exports['ps-ui']:openMenu(statusMenu)
     end
 end
 
